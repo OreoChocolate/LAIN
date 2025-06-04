@@ -1,0 +1,18 @@
+.deprecated
+
+# Python3
+__pycache__
+
+# C++ extension
+build
+*.so
+
+# MacOS
+.DS_Store
+
+# Generated cache
+checkpoints
+data
+
+# Packaging
+*egg-info
