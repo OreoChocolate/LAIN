@@ -7,7 +7,7 @@ WANDB__SERVICE_WAIT=300
 CUDA_VISIBLE_DEVICES=0
 
 torchrun --rdzv_id $id --rdzv_backend=c10d --nproc_per_node=$gpu_num --rdzv_endpoint=127.0.0.1:$port \
-         main.py --pretrained checkpoints/pretrained_detr/detr-r50-hicodet.pth --clip_dir_vit checkpoints/pretrained_clip/ViT-B-16.pt --output-dir checkpoints/NF \
+         main.py --pretrained checkpoints/pretrained_detr/detr-r50-hicodet.pth --clip_dir_vit checkpoints/pretrained_clip/ViT-B-16.pt --output-dir checkpoints/UV \
          --dataset hicodet --zs --zs_type unseen_verb --num_classes 117 --num-workers 4 \
          --epochs 20 --use_hotoken --use_prompt --use_exp --N_CTX 36 \
          --use_insadapter --adapt_dim 32 --use_prior --adapter_alpha 1. \

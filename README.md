@@ -4,12 +4,10 @@ This repo is the official code for our CVPR2025 paper "[Locality-Aware Zero-Shot
 
 
 ## Installation
-
 Follow the instructions to install dependencies.
 
 ```shell
 git clone git@github.com:OreoChocolate/LAIN.git
-git clone git@github.com:fredzzhang/pocket.git
 
 conda create -n lain python=3.8.18
 conda activate lain   

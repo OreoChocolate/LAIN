@@ -60,9 +60,6 @@ class CustomisedDLE(DistributedLearningEngine):
         if self._verbal and self._state.iteration % self._print_interval == 0:
             self._print_statistics()
 
-        if self._state.lr_scheduler is not None:
-            self._state.lr_scheduler.step()
-
     def _on_start_iteration(self):
         self._state.iteration += 1
         self._state.inputs = relocate_to_cuda(self._state.inputs,ignore=True, non_blocking=True)
@@ -122,7 +119,7 @@ class CustomisedDLE(DistributedLearningEngine):
         #     self.save_checkpoint()
         if self._state.lr_scheduler is not None:
             self._state.lr_scheduler.step()
-        self.net.object_class_to_target_class = self.test_loader.dataset.datset.object_class_to_target_class
+        self.net.object_class_to_target_class = self.test_loader.dataset.dataset.object_class_to_target_class
 
 
         if self.args.dataset == 'vcoco':
@@ -142,7 +139,7 @@ class CustomisedDLE(DistributedLearningEngine):
             # raise NotImplementedError(f"Evaluation on V-COCO has not been implemented.")
         ap = self.test_hico(self.test_loader, self.args)
 
-        self.net.object_class_to_target_class = self.train_loader.dataset.datset.object_class_to_target_class
+        self.net.object_class_to_target_class = self.train_loader.dataset.dataset.object_class_to_target_class
         self.net.tp = None
 
         # Fetch indices for rare and non-rare classes
